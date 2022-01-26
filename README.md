@@ -1,8 +1,9 @@
 # CS50W Project 2 - Commerce
 > Status: incomplete
   
-### Description:
+### Description
 * To be implemented.
+* Languages used are HTML, CSS and Python. Django is used as web framework and SQLite as the database.
   
 ### Contents:
 * To be implemented.
