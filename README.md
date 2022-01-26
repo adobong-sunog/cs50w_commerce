@@ -1,4 +1,4 @@
-# CS50W Project 0 - Search
+# CS50W Project 2 - Commerce
 > Status: incomplete
   
 ### Description:
