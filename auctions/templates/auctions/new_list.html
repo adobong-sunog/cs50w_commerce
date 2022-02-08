@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>New listing</h2>
+        <form method="POST" action="{% url 'create' %}">
+    
+            {% csrf_token %}
+            <input type="hidden" name="user" value="{{ user.username }}">
+            <input type="text" name="itemtitle" placeholder="Item title" autofocus>
+            <br>
+            <input type="url" name="image" placeholder="Image url">
+            <br>
+            <input type="number" name="startprice" min="0.00" step="0.01" placeholder="Starting bid">
+            <br>
+            <select name="categories">
+                <option value="fashion">Fashion</option>
+                <option value="electronics">Electronics</option>
+                <option value="toys">Toys</option>
+                <option value="furniture">Furniture</option>
+                <option value="appliances">Appliances</option>
+                <option value="clothing">Clothing</option>
+                <option value="footwear">Footwear</option>
+            </select>
+            <button class="btn btn-primary" type="submit">Create</button>
+        
+        </form>
+
+{% endblock %}

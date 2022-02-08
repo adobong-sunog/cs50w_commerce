@@ -1,3 +1,10 @@
 body {
     padding: 10px;
 }
+
+.rounded {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    padding: 50%;
+}
