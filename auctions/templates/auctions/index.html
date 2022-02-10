@@ -1,7 +1,28 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
 
-    TODO
+    <h2>&nbsp;&nbsp;Active Listings</h2>
+    <hr>
+
+    <div class="container">
+    {% for i in list_item %}
+        <div class="card text-center border-primary">
+            <div class="card-header">
+                <form method="GET" action="{% url 'about' %}">
+                    <input type="hidden" name="itemname" value="{{ i.title }}">
+                    <button class="btn btn-success" type="submit">{{ i.title }}</button>
+                </form>
+            </div>
+            <div class="card-body">
+                <img class="card-img" src="{{ i.image }}">
+                <br>
+                <p style="color: green; text-align: center;" class="card-text">Price: ${{ i.price }}</p>
+                <p class="card-text">By <strong>{{ i.user }}</strong></p>
+                <p class="card-text">Created at <strong>{{ i.date }}</strong></p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+    </div>
 {% endblock %}

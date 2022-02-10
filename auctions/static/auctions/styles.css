@@ -1,10 +1,24 @@
-body {
-    padding: 10px;
+.top {
+    background-color: rgb(50, 139, 190);
 }
 
-.rounded {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    padding: 50%;
+.alert{
+    width: 20%;
+}
+
+.card-header {
+    background-color: rgb(50, 139, 190);
+}
+
+a:hover {
+    background-color: lightblue;
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    max-width:300px;
+    max-height:300px;
 }

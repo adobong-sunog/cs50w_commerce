@@ -15,7 +15,7 @@ class Product(models.Model):
     title = models.CharField(max_length=128)
     image = models.URLField(max_length=500, blank=True, null=True)
     price = models.DecimalField(max_digits=32, decimal_places=2)
-    category = models.CharField(max_length=11)
+    category = models.TextField(max_length=72)
     date = models.DateTimeField(default=datetime.now())
 
 class List(models.Model):

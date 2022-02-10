@@ -2,28 +2,43 @@
 
 {% block body %}
 
-    <h2>New listing</h2>
+    <h2>&nbsp;&nbsp;New list</h2>
+    <hr>
+        <div class="container">
         <form method="POST" action="{% url 'create' %}">
     
             {% csrf_token %}
             <input type="hidden" name="user" value="{{ user.username }}">
-            <input type="text" name="itemtitle" placeholder="Item title" autofocus>
-            <br>
-            <input type="url" name="image" placeholder="Image url">
-            <br>
-            <input type="number" name="startprice" min="0.00" step="0.01" placeholder="Starting bid">
-            <br>
-            <select name="categories">
-                <option value="fashion">Fashion</option>
-                <option value="electronics">Electronics</option>
-                <option value="toys">Toys</option>
-                <option value="furniture">Furniture</option>
-                <option value="appliances">Appliances</option>
-                <option value="clothing">Clothing</option>
-                <option value="footwear">Footwear</option>
-            </select>
+            <div class="form-group">
+                <label for="t">Item name</label>
+                <input type="text" class="form-control" id="t" name="itemtitle" placeholder="e.g: Blender" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="i">Image URL</label>
+                <input type="url" class="form-control" id="i" name="image" placeholder="Input appropriate image link">
+            </div>
+            <div class="form-group">
+                <label for="p">Starting bid</label>
+                <input type="number" class="form-control" id="p" name="startprice" min="0.00" step="0.01" placeholder="e.g: 120.00">
+            </div>
+            <div class="form-group">
+                <p>Select category/categories</p>
+                <input type="checkbox" id="fas" name="categories" value="fashion">
+                <label for="fas">Fashion</label>
+                <input type="checkbox" id="elec" name="categories" value="electronics">
+                <label for="elec">Electronics</label>
+                <input type="checkbox" id="toy" name="categories" value="toys">
+                <label for="toy">Toys</label>
+                <input type="checkbox" id="furn" name="categories" value="furniture">
+                <label for="fas">Furniture</label>
+                <input type="checkbox" id="app" name="categories" value="appliances">
+                <label for="app">Appliances</label>
+                <input type="checkbox" id="cloth" name="categories" value="clothing">
+                <label for="cloth">Clothing</label>
+                <input type="checkbox" id="foot" name="categories" value="footwear">
+                <label for="foot">Footwear</label>
+            </div>
             <button class="btn btn-primary" type="submit">Create</button>
-        
         </form>
-
+        </div>
 {% endblock %}

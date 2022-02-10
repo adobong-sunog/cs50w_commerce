@@ -10,7 +10,10 @@ from .models import *
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    list_item = Product.objects.all()
+    return render(request, "auctions/index.html", {
+        "list_item": list_item
+    })
 
 
 def login_view(request):
@@ -80,3 +83,14 @@ def create_list(request):
         prod.save()
 
         return HttpResponseRedirect(reverse("index"))
+
+def about_product(request):
+    name = request.GET["itemname"]
+    info = Product.objects.filter(title=name)
+
+    return render(request, "auctions/product.html", {
+        "info": info 
+    })
+
+def bidding(request):
+    pass

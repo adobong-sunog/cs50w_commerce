@@ -8,35 +8,39 @@
         <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Auctions</h1>
-        <div>
+        <div class="top">   
+        <h1 style="color: aliceblue;">&nbsp;&nbsp;<strong>Auctions</strong></h1>
             {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
+                <div class="alert alert-info" role="alert" >
+                    &nbsp;&nbsp;&nbsp;Signed in as <strong>{{ user.username }}</strong>.
+                </div>
             {% else %}
-                Not signed in.
+                <div class="alert alert-danger" role="alert" >
+                    &nbsp;&nbsp;&nbsp;Not signed in.
+                </div>
             {% endif %}
-        </div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                <a class="nav-link" style="color: aliceblue;" href="{% url 'index' %}">Active Listings</a>
             </li>
             {% if user.is_authenticated %}
-                <li class="nav-link">
-                    <a class="nav-link" href="{% url 'newlist' %}">Create a listing</a>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'newlist' %}">Create a list</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'logout' %}">Log Out</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'login' %}">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'register' %}">Register</a>
                 </li>
             {% endif %}
         </ul>
         <hr>
+        </div>
         {% block body %}
         {% endblock %}
     </body>

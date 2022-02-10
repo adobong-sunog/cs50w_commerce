@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% for i in info %}
+        <h2>{{ i.title }}</h2>
+        <hr>
+        
+        <div class="container">
+        <div class="card text-center border-primary">
+            <div class="card-body">
+                <img class="card-img-top" src="{{ i.image }}" alt="{{ i.title }}">
+                <br><br>
+                <div class="card-text">
+                    <h3 style="color: green;">Price: ${{ i.price }}</h3>
+                    <br>
+                    <h3>Details</h3>
+                    <ul>
+                        <li>Listed by {{ i.user }} at {{ i.date }}</li>
+                        <li>Category: {{ i.category }}</li>
+                    </ul>
+                </div>
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'bid' %}">
+
+                        {% csrf_token %}
+                        <input type="hidden" name="username" value="{{ user.username }}">
+                        <button class="btn btn-primary" type="submit">Bid on the item</button>
+
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

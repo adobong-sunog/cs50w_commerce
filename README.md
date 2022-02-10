@@ -9,6 +9,11 @@ Project 3/6 for CS50W
 ### Contents:
 * To be implemented.
   
+### Acknowledgements
+Really grateful to these other resources for helping me out with this project:
+* [Fetch Data From a Database And Output To A Webpage by Codemy.com](https://www.youtube.com/watch?v=H3joYTIRqKk)
+* [Bootstrap card documentation](https://getbootstrap.com/docs/4.1/components/card/)
+
 ### About CS50W
 CS50W is a continuation of [CS50](https://cs50.harvard.edu/), diving more deeply into the design and implementaion of web apps with Python, JavaScript, and SQL using frameworks like Django, React, and Bootstrap. Topics include database design, scalability, security, and user experience.  
 > Want to learn CS50W for **free**? You can check out their OpenCourseWare [here](https://cs50.harvard.edu/web/).
