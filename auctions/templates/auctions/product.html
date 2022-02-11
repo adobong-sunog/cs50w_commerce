@@ -21,6 +21,27 @@
                     </ul>
                 </div>
                 {% if user.is_authenticated %}
+                    {% if watchlisted %}
+                        <form method="POST" action="{% url 'list' %}">
+
+                            {% csrf_token %}
+                            <input type="hidden" name="theproduct" value="{{ i.title }}">
+                            <input type="hidden" name="userID" value="{{ user.id }}">
+                            <input type="hidden" name="itemID" value="{{ i.id }}">
+                            <button class="btn btn-primary" type="submit">Remove from watchlist</button>
+
+                        </form>
+                    {% elif notwatchlisted %}
+                        <form method="POST" action="{% url 'list' %}">
+
+                            {% csrf_token %}
+                            <input type="hidden" name="userID" value="{{ user.id }}">
+                            <input type="hidden" name="itemID" value="{{ i.id }}">
+                            <button class="btn btn-primary" type="submit">Add to watchlist</button>
+
+                        </form>
+                    {% endif %}
+                    <br>
                     <form method="POST" action="{% url 'bid' %}">
 
                         {% csrf_token %}
@@ -32,7 +53,6 @@
             </div>
         </div>
         </div>
-
     {% endfor %}
 
 {% endblock %}

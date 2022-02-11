@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from turtle import title
 from unicodedata import name
 from django.contrib.auth import authenticate, login, logout
@@ -10,7 +11,7 @@ from .models import *
 
 
 def index(request):
-    list_item = Product.objects.all()
+    list_item = List.objects.all()
     return render(request, "auctions/index.html", {
         "list_item": list_item
     })
@@ -73,24 +74,81 @@ def new(request):
 
 def create_list(request):
     if request.method == "POST":
-        u = request.POST["user"]
-        n = request.POST["itemtitle"]
-        i = request.POST["image"]
-        p = request.POST["startprice"]
-        c = request.POST["categories"]
+        u = request.POST.get("user", None)
+        n = request.POST.get("itemtitle", None)
+        i = request.POST.get("image", None)
+        p = request.POST.get("startprice", None)
+        c = request.POST.get("categories", None)
+        
+        # Prevents user from trying to create an empty list
+        if  u is None or n is None or c is None:
+            return render(request, "auctions/index.html", {
+                "error": "List creation failed. Missing information on created list."
+            })
+        else: 
+            prod = List(user=u, title=n, image=i,price=p, category=c)
+            prod.save()
+            return HttpResponseRedirect(reverse("index"))
 
-        prod = Product(user=u, title=n, image=i,price=p, category=c)
-        prod.save()
+def about_product(request):
+    if request.method == "POST":
+        name = request.POST["itemname"]
+        userid = request.POST["userid"]
+        itemid = request.POST["itemid"]
+        info = List.objects.filter(title=name)
+
+        # To check if user has already put the item on their watchlist.
+        watched = False
+        user = User.objects.filter(id=userid).values_list("id", flat=True)
+        present = Watchlist.objects.filter(user_id=user[0]).values_list("item_id", flat=True)
+
+        ids = []
+        for i in present:
+            ids += [i]
+        for j in ids:
+            if int(itemid) == j:
+                watched = True
+
+        if watched == True:
+            return render(request, "auctions/product.html", {
+                "info": info,
+                "watchlisted": "watchlisted"
+            })
+        else:
+            return render(request, "auctions/product.html", {
+                "info": info,
+                "notwatchlisted": "notwatchlisted"
+            })
+
+def watchlist(request):
+    if request.method == "POST":
+        uID = request.POST["userID"]
+        iID = request.POST["itemID"]
+        
+        items = Watchlist(item_id=iID, user_id=uID)
+        items.save()
 
         return HttpResponseRedirect(reverse("index"))
 
-def about_product(request):
-    name = request.GET["itemname"]
-    info = Product.objects.filter(title=name)
+def check_wl(request, userN):
+    user = User.objects.filter(username=userN).values_list("id", flat=True)
+    user_list = Watchlist.objects.filter(user_id=user[0]).values_list("item_id", flat=True)
 
-    return render(request, "auctions/product.html", {
-        "info": info 
-    })
+    # To easily get all of the lists that a user watchlisted
+    ids = []
+    for i in user_list:
+        ids += [i]
+
+    items_watched = List.objects.filter(id__in=ids)
+
+    if ids != []:
+        return render(request, "auctions/watchlist.html", {
+            "watched": items_watched
+        })
+    else:
+        return render(request, "auctions/watchlist.html", {
+            "empty": "You have not put any items yet on your watchlist."
+        })
 
 def bidding(request):
     pass

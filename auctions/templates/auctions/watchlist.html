@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Your watchlist</h2>
+    <hr>
+
+    {% if empty %}
+    <h2>{{ empty }}</h2>
+
+    {% else %}
+        <div class="container">
+            {% for i in watched %}
+                <div class="card text-center border-primary">
+                    <div class="card-header">
+                        <form method="POST" action="{% url 'about' %}">
+
+                            {% csrf_token %}
+                            <input type="hidden" name="itemid" value="{{ i.id }}">
+                            <input type="hidden" name="userid" value="{{ user.id }}">
+                            <input type="hidden" name="itemname" value="{{ i.title }}">
+                            <button class="btn btn-success" type="submit">{{ i.title }}</button>
+
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img" src="{{ i.image }}">
+                        <br>
+                        <p style="color: green; text-align: center;" class="card-text">Price: ${{ i.price }}</p>
+                        <p class="card-text">By <strong>{{ i.user }}</strong></p>
+                        <p class="card-text">Created at <strong>{{ i.date }}</strong></p>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

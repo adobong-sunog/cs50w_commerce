@@ -19,23 +19,25 @@
             </div>
             <div class="form-group">
                 <label for="p">Starting bid</label>
-                <input type="number" class="form-control" id="p" name="startprice" min="0.00" step="0.01" placeholder="e.g: 120.00">
+                <input type="number" class="form-control" id="p" name="startprice" min="0.01" step="0.01" placeholder="e.g: 120.00">
             </div>
             <div class="form-group">
-                <p>Select category/categories</p>
-                <input type="checkbox" id="fas" name="categories" value="fashion">
+                <p>Select category</p>
+                <input type="radio" id="non" name="categories" value="none" checked="checked">
+                <label for="non">None</label>
+                <input type="radio" id="fas" name="categories" value="fashion">
                 <label for="fas">Fashion</label>
-                <input type="checkbox" id="elec" name="categories" value="electronics">
+                <input type="radio" id="elec" name="categories" value="electronics">
                 <label for="elec">Electronics</label>
-                <input type="checkbox" id="toy" name="categories" value="toys">
+                <input type="radio" id="toy" name="categories" value="toys">
                 <label for="toy">Toys</label>
-                <input type="checkbox" id="furn" name="categories" value="furniture">
+                <input type="radio" id="furn" name="categories" value="furniture">
                 <label for="fas">Furniture</label>
-                <input type="checkbox" id="app" name="categories" value="appliances">
+                <input type="radio" id="app" name="categories" value="appliances">
                 <label for="app">Appliances</label>
-                <input type="checkbox" id="cloth" name="categories" value="clothing">
+                <input type="radio" id="cloth" name="categories" value="clothing">
                 <label for="cloth">Clothing</label>
-                <input type="checkbox" id="foot" name="categories" value="footwear">
+                <input type="radio" id="foot" name="categories" value="footwear">
                 <label for="foot">Footwear</label>
             </div>
             <button class="btn btn-primary" type="submit">Create</button>
