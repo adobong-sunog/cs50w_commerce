@@ -2,15 +2,12 @@
 
 {% block body %}
 
-    <h2>Your watchlist</h2>
-    <hr>
-
-    {% if empty %}
-    <h2>{{ empty }}</h2>
-
+    <h2>Category</h2>
+    {% if empty_cat %}
+        <h2>{{ empty_cat }}</h2>
     {% else %}
-        <div class="container">
-            {% for i in watched %}
+        {% for i in categ %}
+            <div class="container">
                 <div class="card text-center border-primary">
                     <div class="card-header">
                         <form method="POST" action="{% url 'about' %}">
@@ -28,11 +25,12 @@
                         <br>
                         <p style="color: green; text-align: center;" class="card-text">Current price: ${{ i.price }}</p>
                         <p class="card-text">By <strong>{{ i.user }}</strong></p>
+                        <p class="card-text">Category: {{ i.category }}</p>
                         <p class="card-text">Created at <strong>{{ i.date }}</strong></p>
                     </div>
                 </div>
                 <br>
-            {% endfor %}
-        </div>
-    {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}        
 {% endblock %}

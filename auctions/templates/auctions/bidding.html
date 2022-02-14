@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if errormsg %}
+        <h2 style="color: red;"><strong>{{ errormsg }}</strong></h2>
+    {% else %}
+        {% for i in iteminfo %}
+            <h2>Bid for {{ i.title }}</h2>
+            <hr> 
+                <div class="container">
+
+                    <form method="POST" action="{% url 'bidcheck' %}">
+
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="p"><h3>Your bid</h3></label>
+                            <input type="hidden" name="username" value="{{ user.username }}">
+                            <input type="hidden" name="itemid" value="{{ i.id }}">
+                            <input type="number" class="form-control" id="p" name="newbid" min="{{ i.price }}" step="0.01" placeholder="Must be higher than ${{ i.price }}.">
+                            <br>
+                            <button class="btn btn-primary form-control" type="submit">Place bid</button>
+                        </div>
+
+                    </form>
+                </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

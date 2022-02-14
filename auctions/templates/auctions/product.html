@@ -12,17 +12,29 @@
                 <img class="card-img-top" src="{{ i.image }}" alt="{{ i.title }}">
                 <br><br>
                 <div class="card-text">
-                    <h3 style="color: green;">Price: ${{ i.price }}</h3>
+                    <h3 style="color: green;">Current price: ${{ i.price }}</h3>
                     <br>
                     <h3>Details</h3>
                     <ul>
-                        <li>Listed by {{ i.user }} at {{ i.date }}</li>
-                        <li>Category: {{ i.category }}</li>
+                        <li>{{ i.description }}</li>
+                        <li>Listed by <strong>{{ i.user }}</strong> at <strong>{{ i.date }}</strong></li>
+                        <li>List category: {{ i.category }}</li>
                     </ul>
                 </div>
                 {% if user.is_authenticated %}
+                    {% if lister %}
+                        <form method="POST" action="{% url 'closebid' %}">
+
+                            {% csrf_token %}
+                            <input type="hidden" name="itemID" value="{{ i.id }}">
+                            <input type="hidden" name="current_user" value="{{ user.username }}">
+                            <button class="btn btn-danger" type="submit">Close auction</button>
+
+                        </form>
+                        <br>
+                    {% endif %}
                     {% if watchlisted %}
-                        <form method="POST" action="{% url 'list' %}">
+                        <form method="POST" action="{% url 'remove' %}">
 
                             {% csrf_token %}
                             <input type="hidden" name="theproduct" value="{{ i.title }}">
@@ -45,11 +57,36 @@
                     <form method="POST" action="{% url 'bid' %}">
 
                         {% csrf_token %}
-                        <input type="hidden" name="username" value="{{ user.username }}">
-                        <button class="btn btn-primary" type="submit">Bid on the item</button>
+                        <input type="hidden" name="itemid" value="{{ i.id }}">
+                        <button class="btn btn-success" type="submit">Bid on the item</button>
 
                     </form>
                 {% endif %}
+                <br>
+                <h2>Comments</h2>
+                <div class="card text-center border-success">
+                    <div class="card-text">
+                        {% for i in comments %}
+                            <h5><strong>{{ i.commenter }}</strong>: {{ i.comment }}</h5>
+                        {% empty %}
+                            <br>
+                            <h5>No comments have been made on this list yet.</h5>
+                            <br>
+                        {% endfor %}
+                    </div>
+                    <form method="POST" action="{% url 'post_comment' %}">
+
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="hidden" name="commenter_name" value="{{ user.username }}">
+                            <input type="hidden" name="itemID" value="{{ i.id }}">
+                            <input type="text" class="form-control" name="comment" placeholder="Post a comment...">
+                            <br>
+                            <button class="btn btn-secondary" type="submit">Post comment</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
         </div>

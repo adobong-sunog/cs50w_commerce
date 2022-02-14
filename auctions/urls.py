@@ -13,5 +13,12 @@ urlpatterns = [
     path("product", views.about_product, name="about"),
     path("watchlist", views.watchlist, name="list"),
     path("my_watchlist/<str:userN>", views.check_wl, name="watchlist"),
+    path("categories", views.categ, name="category"),
+    path("categories/<str:categ>", views.view_categ, name="checkcateg"),
+    path("comment", views.post_com, name="post_comment"),
+    path("removed", views.remove, name="remove"),
     path("new_bid", views.bidding, name="bid"),
+    path("check_bid", views.validatebid, name="bidcheck"),
+    path("closed", views.close, name="closebid"),
+    path("auctions_won/<str:winner>", views.won, name="auctionsWon"),
 ]

@@ -23,12 +23,18 @@
             <li class="nav-item">
                 <a class="nav-link" style="color: aliceblue;" href="{% url 'index' %}">Active Listings</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: aliceblue;" href="{% url 'category' %}">Categories</a>
+            </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" style="color: aliceblue;" href="{% url 'newlist' %}">Create a list</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: aliceblue;" href="my_watchlist/{{ user.username }}">Your Watchlist</a>
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'watchlist' user.username %}">Your Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: aliceblue;" href="{% url 'auctionsWon' user.username %}">Auctions won</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: aliceblue;" href="{% url 'logout' %}">Log Out</a>
@@ -42,8 +48,8 @@
                 </li>
             {% endif %}
         </ul>
-        <hr>
         </div>
+        <hr>
         {% block body %}
         {% endblock %}
     </body>

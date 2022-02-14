@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Auctions you have won</h2>
+    <hr>
+
+    {% if no_wins %}
+        <h2>{{ no_wins }}</h2>
+    {% else %}
+        <div class="container">
+            {% for i in items_won %}
+
+                <div class="card text-center border-primary">
+                    <div class="card-header">
+                        <h4 style="color: aliceblue;">{{ i.prodtitle }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img" src="{{ i.image }}">
+                        <br>
+                        <p style="color: green; text-align: center;" class="card-text">Auction won at price: ${{ i.price }}</p>
+                        <p class="card-text">Category: {{ i.category }}</p>
+                        <p class="card-text">List created by <strong>{{ i.lister }}</strong></p>
+                    </div>
+                </div>
+                <br>
+
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
