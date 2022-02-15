@@ -45,7 +45,7 @@ There are 6 models/tables in this project which are:
 * Admins have access to Django's admin interface where they can view, add, edit or delete any lists, bids or comments that have been made in the web application.
   
 ### Acknowledgements
-Really grateful to these other resources (besides the [django docs](https://docs.djangoproject.com/en/4.0/)and [stack overflow](https://stackoverflow.com/)) for helping me out with this project:
+Really grateful to these other resources (besides the [django docs](https://docs.djangoproject.com/en/4.0/) and [stack overflow](https://stackoverflow.com/)) for helping me out with this project:
 * [Fetch Data From a Database And Output To A Webpage by Codemy.com](https://www.youtube.com/watch?v=H3joYTIRqKk)
 * [Bootstrap card documentation](https://getbootstrap.com/docs/4.1/components/card/)
 
