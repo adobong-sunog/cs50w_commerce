@@ -3,7 +3,7 @@ Project 3/6 for CS50W
 > Status:submitted
   
 ### Description
-* An eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
+* Source code for an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
 * Languages used are HTML, CSS and Python. Django is used as web framework and SQLite as the database.
   
 ### Contents:
