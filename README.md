@@ -3,7 +3,7 @@ Status: completed and submitted (Pass)
   
 ## Description
 * [Project specification](https://cs50.harvard.edu/web/2020/projects/2/commerce/)
-* Languages used are HTML, CSS and Python. **[Django](https://www.djangoproject.com) is used as web framework** and SQLite as the database.
+* **[Django](https://www.djangoproject.com) is used as web framework** and SQLite as the database.
 
 ## Setup 
 > Python must be installed on your computer
