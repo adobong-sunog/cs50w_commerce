@@ -8,7 +8,7 @@ Status: completed and submitted (Pass)
 ## Setup 
 > Python must be installed on your computer
 
-Clone this repository:
+Clone this repository
 ```bash
 git clone https://github.com/AncientSoup/cs50w_commerce/
 cd commerce
