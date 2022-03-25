@@ -6,7 +6,7 @@ Status: completed and submitted (Pass)
 * **[Django](https://www.djangoproject.com) is used as web framework** and SQLite as the database.
 
 ## Setup 
-> Python must be installed on your computer
+> Python, [Git](https://git-scm.com) and [Django](https://www.djangoproject.com) must be installed on your computer
 
 Clone this repository
 ```bash
@@ -16,6 +16,11 @@ cd commerce
 Install any required dependencies
 ```bash
 pip install -r requirements.txt
+```  
+Setup the database
+```bash 
+python manage.py makemigrations
+python manage.py migrate
 ```  
 Run the development server through the terminal
 ```bash
