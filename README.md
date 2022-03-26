@@ -11,7 +11,7 @@ Status: completed and submitted (Pass)
 Clone this repository
 ```bash
 git clone https://github.com/AncientSoup/cs50w_commerce/
-cd commerce
+cd cs50w_commerce
 ```  
 Install any required dependencies
 ```bash
