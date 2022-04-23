@@ -6,24 +6,25 @@ Status: completed and submitted (Pass)
 * **[Django](https://www.djangoproject.com) is used as web framework** and SQLite as the database.
 
 ## Setup 
-> Python, [Git](https://git-scm.com) and [Django](https://www.djangoproject.com) must be installed on your computer
+> Python, [Git](https://git-scm.com) and [Django](https://www.djangoproject.com) must be installed on your computer.  
+> Creating a virtual environment is optional, but it is usually better to do so if you know how.
 
 Clone this repository
-```bash
+```
 git clone https://github.com/AncientSoup/cs50w_commerce/
 cd cs50w_commerce
 ```  
 Install any required dependencies
-```bash
+```
 pip install -r requirements.txt
 ```  
-Setup the database
-```bash 
-python manage.py makemigrations
+Initialize the database
+```
+python manage.py makemigrations auctions
 python manage.py migrate
 ```  
-Run the development server through the terminal
-```bash
+Run the development
+```
 python manage.py runserver
 ```
 
