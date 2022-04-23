@@ -23,7 +23,7 @@ Initialize the database
 python manage.py makemigrations auctions
 python manage.py migrate
 ```  
-Run the development
+Run the development server
 ```
 python manage.py runserver
 ```
