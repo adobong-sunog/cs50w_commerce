@@ -22,10 +22,9 @@ Create a secret key
 ```python
 python -c "import secrets; print(secrets.token_urlsafe())"
 ```
-Add the secret key to your bash profile
-```bash
-SECRET_KEY="the secret key from previous command"
-export SECRET_KEY 
+Add the secret key to commerce/settings.py
+```
+SECRET_KEY='the secret key from previous command (include the single quote marks)'
 ```
 Initialize the database
 ```
